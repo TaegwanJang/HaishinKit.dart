@@ -103,6 +103,7 @@ class RtmpStreamHandler(
                 result.success(null)
             }
             "$TAG#attachVideo" -> {
+                Log.d(TAG, "attachVideo attachVideo attachVideo attachVideo")
                 val source = call.argument<Map<String, Any?>>("source")
                 if (source == null) {
                     instance?.attachVideo(null)
