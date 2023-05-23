@@ -2,14 +2,11 @@ package com.haishinkit.haishin_kit
 
 import android.content.Context
 import android.hardware.camera2.CameraCharacteristics
-import android.opengl.Matrix
 import android.os.Handler
-import android.util.Log
 import android.util.Size
 import android.view.WindowManager
 import com.haishinkit.event.Event
 import com.haishinkit.event.IEventListener
-import com.haishinkit.graphics.ImageOrientation
 import com.haishinkit.media.AudioRecordSource
 import com.haishinkit.media.Camera2Source
 import com.haishinkit.rtmp.RtmpStream
@@ -79,18 +76,7 @@ class RtmpStreamHandler(
                 result.success(null)
             }
             "$TAG#setCaptureSettings" -> {
-                Log.d(TAG, "setCaptureSettings setCaptureSettings setCaptureSettings setCaptureSettings")
-//                (instance?.drawable as? NetStreamDrawableTexture)?.imageOrientation = ImageOrientation.LEFT_MIRRORED
-                camera = Camera2Source(plugin.flutterPluginBinding.applicationContext)
-                camera?.let {
-                    instance?.attachVideo(camera)
-                }
-                val handler = Handler()
-                handler.postDelayed({
-                    if (instance?.drawable != null) {
-                        camera?.open(CameraCharacteristics.LENS_FACING_FRONT)
-                    }
-                }, 750)
+                camera?.switchCamera()
                 result.success(null)
             }
             "$TAG#attachAudio" -> {
@@ -103,7 +89,6 @@ class RtmpStreamHandler(
                 result.success(null)
             }
             "$TAG#attachVideo" -> {
-                Log.d(TAG, "attachVideo attachVideo attachVideo attachVideo")
                 val source = call.argument<Map<String, Any?>>("source")
                 if (source == null) {
                     instance?.attachVideo(null)
