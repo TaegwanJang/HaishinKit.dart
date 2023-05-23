@@ -84,6 +84,9 @@ class RTMPStreamHandler: NSObject, MethodCallHandler {
             if let continuousExposure = settings["continuousExposure"] as? Bool {
                 instance?.captureSettings[.continuousExposure] = continuousExposure
             }
+            if let isVideoMirrored = settings["isVideoMirrored"] as? Bool {
+                instance?.captureSettings[.isVideoMirrored] = isVideoMirrored
+            }
             result(nil)
         case "RtmpStream#attachAudio":
             let source = arguments["source"] as? [String: Any?]
