@@ -2,10 +2,12 @@ class CaptureSettings {
   int fps;
   bool continuousAutofocus;
   bool continuousExposure;
+  bool isVideoMirrored;
 
   CaptureSettings({
     this.continuousAutofocus = false,
     this.continuousExposure = false,
+    this.isVideoMirrored = true,
     this.fps = 30,
   });
 
@@ -16,13 +18,15 @@ class CaptureSettings {
           runtimeType == other.runtimeType &&
           continuousAutofocus == other.continuousAutofocus &&
           continuousExposure == other.continuousExposure &&
+          isVideoMirrored == other.isVideoMirrored &&
           fps == other.fps);
 
   @override
   int get hashCode =>
       fps.hashCode ^
       continuousAutofocus.hashCode ^
-      continuousExposure.hashCode;
+      continuousExposure.hashCode ^
+      isVideoMirrored.hashCode;
 
   @override
   String toString() {
@@ -30,6 +34,7 @@ class CaptureSettings {
         ' fps: $fps,' +
         ' continuousAutofocus: $continuousAutofocus,' +
         ' continuousExposure: $continuousExposure,' +
+        ' isVideoMirrored: $isVideoMirrored,' +
         '}';
   }
 
@@ -37,11 +42,13 @@ class CaptureSettings {
     int? fps,
     bool? continuousAutofocus,
     bool? continuousExposure,
+    bool? isVideoMirrored,
   }) {
     return CaptureSettings(
       fps: fps ?? this.fps,
       continuousAutofocus: continuousAutofocus ?? this.continuousAutofocus,
       continuousExposure: continuousExposure ?? this.continuousExposure,
+      isVideoMirrored: isVideoMirrored ?? this.isVideoMirrored,
     );
   }
 
@@ -50,6 +57,7 @@ class CaptureSettings {
       'fps': this.fps,
       'continuousAutofocus': this.continuousAutofocus,
       'continuousExposure': this.continuousExposure,
+      'isVideoMirrored': this.isVideoMirrored,
     };
   }
 
@@ -58,6 +66,7 @@ class CaptureSettings {
       fps: map['fps'] as int,
       continuousAutofocus: map['continuousAutofocus'] as bool,
       continuousExposure: map['continuousExposure'] as bool,
+      isVideoMirrored: map['isVideoMirrored'] as bool,
     );
   }
 }
