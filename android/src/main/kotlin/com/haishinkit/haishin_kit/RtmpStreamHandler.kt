@@ -76,7 +76,8 @@ class RtmpStreamHandler(
                 result.success(null)
             }
             "$TAG#setCaptureSettings" -> {
-                camera?.switchCamera()
+                print("setCaptureSettings setCaptureSettings setCaptureSettings setCaptureSettings")
+                (instance?.drawable as? NetStreamDrawableTexture)?.isRotatesWithContent = true
                 result.success(null)
             }
             "$TAG#attachAudio" -> {
