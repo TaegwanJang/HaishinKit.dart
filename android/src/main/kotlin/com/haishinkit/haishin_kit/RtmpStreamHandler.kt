@@ -3,6 +3,7 @@ package com.haishinkit.haishin_kit
 import android.content.Context
 import android.hardware.camera2.CameraCharacteristics
 import android.os.Handler
+import android.util.Log
 import android.util.Size
 import android.view.WindowManager
 import com.haishinkit.event.Event
@@ -76,6 +77,7 @@ class RtmpStreamHandler(
                 result.success(null)
             }
             "$TAG#setCaptureSettings" -> {
+                Log.d(TAG, "setCaptureSettings setCaptureSettings setCaptureSettings")
                 camera?.switchCamera()
                 result.success(null)
             }
