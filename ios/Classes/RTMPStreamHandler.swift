@@ -75,15 +75,15 @@ class RTMPStreamHandler: NSObject, MethodCallHandler {
                 let settings = arguments["settings"] as? [String: Any?] else {
                 return
             }
-//            if let fps = settings["fps"] as? NSNumber {
-//                instance?.captureSettings[.fps] = fps.intValue
-//            }
-//            if let continuousAutofocus = settings["continuousAutofocus"] as? Bool {
-//                instance?.captureSettings[.continuousAutofocus] = continuousAutofocus
-//            }
-//            if let continuousExposure = settings["continuousExposure"] as? Bool {
-//                instance?.captureSettings[.continuousExposure] = continuousExposure
-//            }
+            if let fps = settings["fps"] as? NSNumber {
+                instance?.captureSettings[.fps] = fps.intValue
+            }
+            if let continuousAutofocus = settings["continuousAutofocus"] as? Bool {
+                instance?.captureSettings[.continuousAutofocus] = continuousAutofocus
+            }
+            if let continuousExposure = settings["continuousExposure"] as? Bool {
+                instance?.captureSettings[.continuousExposure] = continuousExposure
+            }
             if let isVideoMirrored = settings["isVideoMirrored"] as? Bool {
                 instance?.captureSettings[.isVideoMirrored] = isVideoMirrored
             }
