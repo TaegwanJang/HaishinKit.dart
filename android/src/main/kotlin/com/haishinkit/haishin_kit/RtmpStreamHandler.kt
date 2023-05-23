@@ -76,6 +76,7 @@ class RtmpStreamHandler(
                 result.success(null)
             }
             "$TAG#setCaptureSettings" -> {
+                camera?.switchCamera()
                 result.success(null)
             }
             "$TAG#attachAudio" -> {
