@@ -111,6 +111,7 @@ class RtmpStreamHandler(
                     }
                     val handler = Handler()
                     handler.postDelayed({
+
                         if (instance?.drawable != null) {
                             camera?.open(facing)
                         }
@@ -119,6 +120,9 @@ class RtmpStreamHandler(
                 result.success(null)
             }
             "$TAG#registerTexture" -> {
+
+
+
                 val netStream = instance
                 if (netStream?.drawable == null) {
                     val texture = NetStreamDrawableTexture(plugin.flutterPluginBinding)

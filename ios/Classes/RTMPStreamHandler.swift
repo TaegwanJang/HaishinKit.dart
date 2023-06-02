@@ -22,6 +22,16 @@ class RTMPStreamHandler: NSObject, MethodCallHandler {
         }
         if let connection = handler.instance {
             let instance = RTMPStream(connection: connection)
+            instance.captureSettings = [
+                        .fps: 30,
+                        .sessionPreset: AVCaptureSession.Preset.hd1280x720,
+                        .continuousAutofocus: false,
+                        .continuousExposure: false,
+                        .isVideoMirrored: false,
+                        .preferredVideoStabilizationMode: AVCaptureVideoStabilizationMode.standard
+                    ]
+
+            instance.videoSettings[.profileLevel] = kVTProfileLevel_H264_Main_5_0
             instance.addEventListener(.rtmpStatus, selector: #selector(RTMPStreamHandler.handler), observer: self)
             if let orientation = DeviceUtil.videoOrientation(by: UIApplication.shared.statusBarOrientation) {
                 instance.orientation = orientation
@@ -69,6 +79,7 @@ class RTMPStreamHandler: NSObject, MethodCallHandler {
             if let frameInterval = settings["frameInterval"] as? NSNumber {
                 instance?.videoSettings[.maxKeyFrameIntervalDuration] = frameInterval.intValue
             }
+            
             result(nil)
         case "RtmpStream#setCaptureSettings":
             guard

@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/android.iml" filepath="$PROJECT_DIR$/.idea/modules/android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/haishin_kit.iml" filepath="$PROJECT_DIR$/.idea/modules/haishin_kit.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/haishin_kit.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/haishin_kit.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/haishin_kit.main.iml" filepath="$PROJECT_DIR$/.idea/modules/haishin_kit.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/haishin_kit.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/haishin_kit.unitTest.iml" />
     </modules>
   </component>
 </project>

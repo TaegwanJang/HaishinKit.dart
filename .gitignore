@@ -24,7 +24,3 @@ doc/api/
 /metrics/
 
 !.idea/.gitignore
-!.idea/HaishinKit.dart.iml
-!.idea/modules.xml
-!.idea/vcs.xml
-!haishin_kit.iml
