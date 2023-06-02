@@ -27,7 +27,6 @@ class RTMPStreamHandler: NSObject, MethodCallHandler {
                         .sessionPreset: AVCaptureSession.Preset.hd1280x720,
                         .continuousAutofocus: false,
                         .continuousExposure: false,
-                        .isVideoMirrored: false,
                         .preferredVideoStabilizationMode: AVCaptureVideoStabilizationMode.standard
                     ]
 
