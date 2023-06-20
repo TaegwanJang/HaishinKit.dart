@@ -4,7 +4,39 @@ import HaishinKit
 import AVFoundation
 import VideoToolbox
 
-class RTMPStreamHandler: NSObject, MethodCallHandler {
+class RTMPStreamHandler: NSObject, MethodCallHandler, RTMPStreamDelegate {
+    func rtmpStream(_ stream: HaishinKit.RTMPStream, publishInsufficientBWOccured connection: HaishinKit.RTMPConnection) {
+        
+    }
+    
+    func rtmpStream(_ stream: HaishinKit.RTMPStream, publishSufficientBWOccured connection: HaishinKit.RTMPConnection) {
+        
+    }
+    
+    func rtmpStream(_ stream: HaishinKit.RTMPStream, didOutput audio: AVAudioBuffer, presentationTimeStamp: CMTime) {
+        
+    }
+    
+    func rtmpStream(_ stream: HaishinKit.RTMPStream, didOutput video: CMSampleBuffer) {
+        
+    }
+    
+    func rtmpStream(_ stream: HaishinKit.RTMPStream, updatedStats connection: HaishinKit.RTMPConnection) {
+        let result = Double(stream.info.currentBytesPerSecond) / 125_000        
+        var map: [String: Any?] = [:]
+        map["type"] = "updatedStats"
+        map["data"] = ["fps": stream.currentFPS, "mbps" : String(format: "%.1f", result)]
+        eventSink?(map)
+    }
+    
+    func rtmpStream(_ stream: HaishinKit.RTMPStream, videoCodecErrorOccurred error: HaishinKit.VideoCodec.Error) {
+        
+    }
+    
+    func rtmpStreamDidClear(_ stream: HaishinKit.RTMPStream) {
+        
+    }
+    
     private let plugin: SwiftHaishinKitPlugin
     private var instance: RTMPStream?
     private var eventChannel: FlutterEventChannel?
@@ -31,6 +63,7 @@ class RTMPStreamHandler: NSObject, MethodCallHandler {
                     ]
 
             instance.videoSettings[.profileLevel] = kVTProfileLevel_H264_Main_5_0
+            instance.delegate = self
             instance.addEventListener(.rtmpStatus, selector: #selector(RTMPStreamHandler.handler), observer: self)
             if let orientation = DeviceUtil.videoOrientation(by: UIApplication.shared.statusBarOrientation) {
                 instance.orientation = orientation
