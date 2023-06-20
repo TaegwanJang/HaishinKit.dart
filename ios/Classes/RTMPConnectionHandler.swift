@@ -6,7 +6,7 @@ class RTMPConnectionHandler: NSObject, MethodCallHandler {
     var instance: RTMPConnection?
     private let plugin: SwiftHaishinKitPlugin
     private var channel: FlutterEventChannel?
-    private var eventSink: FlutterEventSink?
+    var eventSink: FlutterEventSink?
 
     init(plugin: SwiftHaishinKitPlugin) {
         self.plugin = plugin

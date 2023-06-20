@@ -25,7 +25,7 @@ class RTMPStreamHandler: NSObject, MethodCallHandler, RTMPStreamDelegate {
         let result = Double(stream.info.currentBytesPerSecond) / 125_000        
         var map: [String: Any?] = [:]
         map["type"] = "updatedStats"
-        map["data"] = ["fps": stream.currentFPS, "mbps" : String(format: "%.1f", result)]
+        map["data"] = ["fps": stream.currentFPS, "mbps" : String(format: "%.1f", result)] as [String : Any]
         eventSink?(map)
     }
     
@@ -70,7 +70,8 @@ class RTMPStreamHandler: NSObject, MethodCallHandler, RTMPStreamDelegate {
             }
             NotificationCenter.default.addObserver(self, selector: #selector(on(_:)), name: UIDevice.orientationDidChangeNotification, object: nil)
             self.instance = instance
-        }
+        }        
+        self.eventSink = handler.eventSink
     }
 
     func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
