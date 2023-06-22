@@ -35,6 +35,12 @@ class MethodChannelRtmpStream extends RtmpStreamPlatform {
   }
 
   @override
+  Future<void> setZoom(Map<String, dynamic> params) async {
+    return await MethodChannelHaishinKit.channel
+        .invokeMethod<void>("RtmpStream#setZoom", params);
+  }
+
+  @override
   Future<void> publish(Map<String, dynamic> params) async {
     return await MethodChannelHaishinKit.channel
         .invokeMethod<void>("RtmpStream#publish", params);

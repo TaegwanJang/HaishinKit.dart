@@ -159,6 +159,11 @@ class RTMPStreamHandler: NSObject, MethodCallHandler, RTMPStreamDelegate {
                 instance?.attachCamera(DeviceUtil.device(withPosition: devicePosition))
             }
             result(nil)
+        case "RtmpStream#setZoom":
+            if let zoom = arguments["zoomLevel"] as? Double {
+                instance?.setZoomFactor(CGFloat(zoom))
+            }
+            result(nil)
         case "RtmpStream#play":
             instance?.play(arguments["name"] as? String)
             result(nil)

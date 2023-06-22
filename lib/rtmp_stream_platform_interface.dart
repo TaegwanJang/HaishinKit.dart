@@ -37,6 +37,11 @@ abstract class RtmpStreamPlatform extends PlatformInterface {
     throw UnimplementedError('attachAudio() has not been implemented.');
   }
 
+  /// set zoom level
+  Future<void> setZoom(Map<String, dynamic> params) {
+    throw UnimplementedError('setZoom() has not been implemented.');
+  }
+
   /// Attaches a video source.
   Future<void> attachVideo(Map<String, dynamic> params) {
     throw UnimplementedError('attachVideo() has not been implemented.');

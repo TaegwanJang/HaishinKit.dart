@@ -26,6 +26,7 @@ class RtmpStream extends NetStream {
   VideoSettings _videoSettings = VideoSettings();
   AudioSettings _audioSettings = AudioSettings();
   CaptureSettings _captureSettings = CaptureSettings();
+  double _zoomLevel = 1.0;
 
   RtmpStream._();
 
@@ -62,6 +63,14 @@ class RtmpStream extends NetStream {
     _captureSettings = captureSettings;
     RtmpStreamPlatform.instance.setCaptureSettings(
         {"memory": _memory, "settings": captureSettings.toMap()});
+  }
+
+  @override
+  set zoom(double zoomLevel) {
+    assert(_memory != null);
+    _zoomLevel = zoomLevel;
+    RtmpStreamPlatform.instance
+        .setZoom({"memory": _memory, "zoomLevel": _zoomLevel});
   }
 
   @override

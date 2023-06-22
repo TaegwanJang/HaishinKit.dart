@@ -28,6 +28,9 @@ abstract class NetStream {
   /// Register a texture to this stream.
   Future<int?> registerTexture(Map<String, dynamic> params);
 
+  /// Specifies stream AVSession properties.
+  set zoom(double zoomLevel);
+
   /// Stops playing or publishing and makes available other uses.
   Future<void> close();
 
